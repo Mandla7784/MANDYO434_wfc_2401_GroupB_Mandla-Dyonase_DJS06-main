@@ -101,7 +101,6 @@ console.log(
 console.log(
   (function () {
     const findExtremes = (products) => {
-   
       const highestPriceItem = products.reduce((highest, current) => {
         return highest.price > current.price ? highest : current;
       });
@@ -111,7 +110,6 @@ console.log(
         return lowest.price < current.price ? lowest : current;
       });
 
-      
       return `Highest: ${highestPriceItem.product}. Lowest: ${lowestPriceItem.product}.`;
     };
 
@@ -119,14 +117,16 @@ console.log(
   })()
 );
 
-
 console.log(
+  (function () {
+    const transformedProducts = Object.entries(products).reduce(
+      (acc, [name, cost]) => {
+        acc.push({ name, cost });
+        return acc;
+      },
+      []
+    );
 
-
-const transformedProducts = Object.entries(products).reduce((acc, [name, cost]) => {
-  acc.push({ name, cost });
-  return acc;
-}, []);
-
-
-)
+    return transformedProducts;
+  })()
+);
