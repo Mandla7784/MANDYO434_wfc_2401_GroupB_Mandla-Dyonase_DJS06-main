@@ -92,10 +92,41 @@ console.log(
 
 console.log(products.filter((product) => product.product.length <= 5));
 
-////3
+console.log(
+  products.reduce((acc, currentProduct) => {
+    return acc + currentProduct.product;
+  }, "")
+);
 
-const newProducts = products.map((product) => {
-  return parseFloat(product.price);
-});
+console.log(
+  (function () {
+    const findExtremes = (products) => {
+   
+      const highestPriceItem = products.reduce((highest, current) => {
+        return highest.price > current.price ? highest : current;
+      });
 
-console.log(newProducts);
+      // Find the lowest-priced item
+      const lowestPriceItem = products.reduce((lowest, current) => {
+        return lowest.price < current.price ? lowest : current;
+      });
+
+      
+      return `Highest: ${highestPriceItem.product}. Lowest: ${lowestPriceItem.product}.`;
+    };
+
+    return findExtremes(products);
+  })()
+);
+
+
+console.log(
+
+
+const transformedProducts = Object.entries(products).reduce((acc, [name, cost]) => {
+  acc.push({ name, cost });
+  return acc;
+}, []);
+
+
+)
